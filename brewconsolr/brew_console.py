@@ -9,6 +9,7 @@
 import time
 import os
 import requests
+from requests import get
 import colorama
 import webbrowser as wb
 import random
@@ -115,7 +116,7 @@ def console():
 
     utilitycmds = ["reload", "compare"]
     funcmds = ["darkweb"]
-    cmds = ["findip","checkip"]
+    cmds = ["findip","checkip", "myip"]
 
     getvar = "g/"
 
@@ -139,6 +140,7 @@ def console():
         ------------------------------------
         {red}{cmds[0]}{normal}: Find an IP Location.
         {red}{cmds[1]}{normal}: Give info on a website/ip
+        {red}{cmds[2]}{normal}: If you don't know what your IP is..?
         ------------------------------------
         {red}{funcmds[0]}{normal}: prank ur friends
         ------------------------------------
@@ -195,6 +197,11 @@ def console():
             console()
         else:
             os.system(f"ping {ip} -a")
+        console()
+    elif cmdinput.lower() == cmds[2]:
+        ip = get('https://api64.ipify.org?format=jsonp&callback=getip').text
+        print('Public IP Address > ' + green + "{}".format(ip))
+        print(f'{normal}')
         console()
     elif cmdinput.lower() == utilitycmds[0]:
         os.system("cls")
