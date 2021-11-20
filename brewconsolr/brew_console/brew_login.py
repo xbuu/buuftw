@@ -110,6 +110,21 @@ print(red + f"""
 #| Console Function
 #| what are u doing here
 
+def doesfilexist(filePathAndName):
+    return os.path.exists(filePathAndName)
+
+if doesfilexist("username.txt"):
+    pass
+elif doesfilexist("password.txt"):
+    pass
+else:
+    username = input("Username : ")
+    usernamew = open("username.txt", "w")
+    usernamew.write(username)
+    password = input("Password : ")
+    passwordw = open("password.txt", "w")
+    passwordw.write(password)
+
 def console():
     cmdinput = input("> ")
 
